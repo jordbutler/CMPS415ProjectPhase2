@@ -63,11 +63,13 @@ async function run() {
   try {
     const database = client.db('jbdb');
     const parts = database.collection('cmps415mongodb');
+    const cursor = database.coolection('cmps415mongodb').find();
+    
 
     
    
-    console.log(parts);
-    res.send('All Items: ' + JSON.stringify(parts));  //Use stringify to print a json
+    console.log(cursor);
+    res.send('All Items: ' + JSON.stringify(cursor));  //Use stringify to print a json
 
   } finally {
     // Ensures that the client will close when you finish/error
