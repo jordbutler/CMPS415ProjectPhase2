@@ -55,7 +55,7 @@ async function run() {
 run().catch(console.dir);
 });
 
-app.get('/api/mongo/items', function(req, res) {
+app.get('/api/items', function(req, res) {
 const client = new MongoClient(uri);
 console.log("Getting all items");
 
