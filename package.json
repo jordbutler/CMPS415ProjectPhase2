@@ -1,9 +1,9 @@
 {
-  "name": "ckMongoTest",
+  "name": "CMPS415ProjectPhase2",
   "version": "1.0.0",
   "description": "CKs Express Mongo Test on Render",
   "main": "testmongo.js",
-  "repository": "https://github.com/jordbutler/MongoRender",
+  "repository": "https://github.com/jordbutler/CMPS415ProjectPhase2",
   "author": "CK",
   "license": "MIT",
   "private": false,
