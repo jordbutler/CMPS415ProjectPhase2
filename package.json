@@ -1,14 +1,14 @@
 {
   "name": "CMPS415ProjectPhase2",
   "version": "1.0.0",
-  "description": "CKs Express Mongo Test on Render",
-  "main": "testmongo.js",
+  "description": "Jordan Butler CMPS415ProjectPhase2",
+  "main": "phase2.js",
   "repository": "https://github.com/jordbutler/CMPS415ProjectPhase2",
   "author": "CK",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node testmongo.js"
+    "start": "node phase2.js"
   },
   "dependencies": {
     "express": "^4.18.2",
