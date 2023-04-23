@@ -31,8 +31,8 @@ async function run() {
     const parts = database.collection('cmps415mongodb');
     
     const cursor = await parts.find();
-    console.log(cursor);
-    res.send('Found this: ' + JSON.stringify(cursor));
+    console.log(parts);
+    res.send('Found this: ' + JSON.stringify(parts));
   } finally {
     await client.close();
   }
