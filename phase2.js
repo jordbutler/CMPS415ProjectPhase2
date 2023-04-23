@@ -43,5 +43,3 @@ app.listen(PORT, async () => {
 app.use(cors());
 
 
-app.use(router);
-
