@@ -22,8 +22,32 @@ app.get('/', function(req, res) {
   res.send(outstring);
 });
 
-app.get('/say/:name', function(req, res) {
-  res.send('Hello ' + req.params.name + '!');
+/* POST Method */
+app.post('/user/add', (req, res) => {
+    //get the existing user data
+    const client = new MongoClient(uri);
+    const database = client.db('jbdb');
+    const existUsers = database.collection('cmps415mongodb').find();
+    
+    //get the new user data from post request
+    const userData = req.body
+
+    //User needs a fullname, age, username, and password
+    if (userData.fullname == null || userData.age == null || userData.username == null || userData.password == null) {
+        return res.status(401).send({error: true, msg: 'User data missing'})
+    }
+    
+    //check if the username exist already
+    const findExist = existUsers.find( user => user.username === userData.username )
+    if (findExist) {
+        return res.status(409).send({error: true, msg: 'username already exist'})
+    }
+    res.send({success: true, msg: 'User data added successfully'})
+    existUsers.insertOne(req.body).then(result => {
+      console.log(result)
+    }).catch(error => console.error(error))
+    
+
 });
 
 
@@ -62,14 +86,10 @@ console.log("Getting all items");
 async function run() {
   try {
     const database = client.db('jbdb');
-    const parts = database.collection('cmps415mongodb');
-    const cursor = database.coolection('cmps415mongodb').find();
-    
-
-    
+    const parts = database.collection('cmps415mongodb').find();
    
-    console.log(cursor);
-    res.send('All Items: ' + JSON.stringify(cursor));  //Use stringify to print a json
+    console.log(parts);
+    res.send('All Items: ' + JSON.stringify(parts));  //Use stringify to print a json
 
   } finally {
     // Ensures that the client will close when you finish/error
