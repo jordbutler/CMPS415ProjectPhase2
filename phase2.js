@@ -23,12 +23,22 @@ app.get('/', function(req, res) {
 });
 
 /* GET-all items Method */
-app.get('/items/list', (req, res) => {
+app.get('/items/list', function(req, res) => {
     const client = new MongoClient(uri);
+async function run() {
+  try {
     const database = client.db('jbdb');
-    const parts = database.collection('cmps415mongodb').find({});
-    res.send(JSON.stringify(parts))
-})
+    const parts = database.collection('cmps415mongodb');
+    
+    const cursor = await parts.find();
+    console.log(cursor);
+    res.send('Found this: ' + JSON.stringify(cursor));
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);    
+});
 
 // Route to access database:
 app.get('/api/mongo/:item', function(req, res) {
