@@ -7,6 +7,8 @@ const uri = "mongodb+srv://jordbutler:AcidKvvng253@cmps415phase2.2zmcyxj.mongodb
 const express = require('express');
 const app = express();
 const port = 3000;
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
 
@@ -15,39 +17,31 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes will go here
 
-// Default route:
-app.get('/', function(req, res) {
-  const myquery = req.query;
-  var outstring = 'Starting... ';
-  res.send(outstring);
+const router = require("./router");
+const cors = require("cors");
+
+
+dotenv.config();
+
+
+mongoose
+  .connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+app.listen(PORT, async () => {
+  console.log(`server up on port ${PORT}`);
 });
 
-// Route to access database:
-app.get('/api/mongo/:item', function(req, res) {
-const client = new MongoClient(uri);
-const searchKey = "{ partID: '" + req.params.item + "' }";
-console.log("Looking for: " + searchKey);
+app.use(cors());
 
-async function run() {
-  try {
-    const database = client.db('jbdb');
-    const parts = database.collection('CMPS415Phase2');
 
-    // Hardwired Query for a part that has partID '12345'
-    // const query = { partID: '12345' };
-    // But we will use the parameter provided with the route
-    const query = { partID: req.params.item };
-
-    const part = await parts.findOne(query);
-    console.log(part);
-    res.send('Found this: ' + JSON.stringify(part));  //Use stringify to print a json
-
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-});
-
+app.use(router);
 
