@@ -1,20 +1,25 @@
 {
-  "name": "CMPS415ProjectPhase2",
+  "name": "phase2practice",
   "version": "1.0.0",
-  "description": "Jordan Butler CMPS415ProjectPhase2",
-  "main": "phase2.js",
-  "repository": "https://github.com/jordbutler/CMPS415ProjectPhase2",
-  "author": "CK",
-  "license": "MIT",
-  "private": false,
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node phase2.js"
+    "start": "node phase2.js",
+    "test": "mocha --timeout 10000"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongodb": "^5.1.0"
+    "mongoose": "^7.0.4"
   },
-  "engines": {
-    "node": ">=14"
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22"
   }
 }
