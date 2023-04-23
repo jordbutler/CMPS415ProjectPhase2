@@ -59,7 +59,7 @@ async function run() {
     // But we will use the parameter provided with the route
     const query = { partID: req.params.item };
 
-    const part = await parts.findOne(query);
+    const part = await parts.find();
     console.log(part);
     res.send('Found this: ' + JSON.stringify(part));  //Use stringify to print a json
 
