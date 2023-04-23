@@ -10,6 +10,7 @@ console.log('Server started at http://localhost:' + port);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const db = mongoose.connect(uri);
     
     app.get('/', function(req, res) {
       var outstring = 'Starting... ';
@@ -23,6 +24,12 @@ app.use(express.urlencoded({ extended: true }));
   });
         
  });
+
+app.get('/items', function(req, res) {
+    const database = client.db('sample_airbnb');
+    const cursor = database.collection('account').find();
+  console.log(cursor)
+});
 
 
 
