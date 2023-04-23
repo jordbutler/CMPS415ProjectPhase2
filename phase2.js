@@ -79,22 +79,10 @@ async function run() {
 run().catch(console.dir);
 });
 
-app.get('/api/items', function(req, res) {
-const client = new MongoClient(uri);
-console.log("Getting all items");
-
-async function run() {
-  try {
-    const database = client.db('jbdb');
-    const parts = database.collection('cmps415mongodb').find();
-   
-    console.log(parts);
-    res.send('All Items: ' + JSON.stringify(parts));  //Use stringify to print a json
-
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-});
+app.get('/api/items', (req, res) => {
+  const client = new MongoClient(uri);
+  const database = client.db('jbdb');
+  const cursor = db.collection('cmps415mongodb').find()
+  console.log(cursor)
+  // ...
+})
