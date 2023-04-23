@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 // The uri string must be the connection string for the database (obtained on Atlas).
-const uri = "mongodb+srv://w0708515:KvvngAcid253@jbdb.wr4nvvi.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://jordbutler:AcidKvvng253@cmps415phase2.2zmcyxj.mongodb.net/?retryWrites=true&w=majority";
 
 // --- This is the standard stuff to get it to work on the browser
 const express = require('express');
@@ -22,27 +22,6 @@ app.get('/', function(req, res) {
   res.send(outstring);
 });
 
-/* GET-all items Method */
-app.get('/api/items/list', function(req, res) {
-const client = new MongoClient(uri);
-
-async function run() {
-  try {
-    const database = client.db('jbdb');
-    const parts = database.collection('cmps415mongodb');
-
-    const part = await parts.find();
-    console.log(part);
-    res.send('Found this: ' + JSON.stringify(part));  //Use stringify to print a json
-
-  } finally {
-    
-    await client.close();
-  }
-}
-run().catch(console.dir);
-});
-
 // Route to access database:
 app.get('/api/mongo/:item', function(req, res) {
 const client = new MongoClient(uri);
@@ -52,7 +31,7 @@ console.log("Looking for: " + searchKey);
 async function run() {
   try {
     const database = client.db('jbdb');
-    const parts = database.collection('cmps415mongodb');
+    const parts = database.collection('CMPS415Phase2');
 
     // Hardwired Query for a part that has partID '12345'
     // const query = { partID: '12345' };
