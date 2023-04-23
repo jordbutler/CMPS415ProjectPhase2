@@ -82,7 +82,7 @@ run().catch(console.dir);
 app.get('/api/items', (req, res) => {
   const client = new MongoClient(uri);
   const database = client.db('jbdb');
-  const cursor = db.collection('cmps415mongodb').find()
+  const cursor = database.collection('cmps415mongodb').find()
   console.log(cursor)
   // ...
 })
