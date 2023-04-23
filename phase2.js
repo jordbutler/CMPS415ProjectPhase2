@@ -22,34 +22,13 @@ app.get('/', function(req, res) {
   res.send(outstring);
 });
 
-/* POST Method */
-app.post('/user/add', (req, res) => {
-    //get the existing user data
+/* GET-all items Method */
+app.get('/items/list', (req, res) => {
     const client = new MongoClient(uri);
     const database = client.db('jbdb');
-    const existUsers = database.collection('cmps415mongodb').find();
-    
-    //get the new user data from post request
-    const userData = req.body
-
-    //User needs a fullname, age, username, and password
-    if (userData.fullname == null || userData.age == null || userData.username == null || userData.password == null) {
-        return res.status(401).send({error: true, msg: 'User data missing'})
-    }
-    
-    //check if the username exist already
-    const findExist = existUsers.find( user => user.username === userData.username )
-    if (findExist) {
-        return res.status(409).send({error: true, msg: 'username already exist'})
-    }
-    res.send({success: true, msg: 'User data added successfully'})
-    existUsers.insertOne(req.body).then(result => {
-      console.log(result)
-    }).catch(error => console.error(error))
-    
-
-});
-
+    const parts = database.collection('cmps415mongodb').find({});
+    res.send(JSON.stringify(parts))
+})
 
 // Route to access database:
 app.get('/api/mongo/:item', function(req, res) {
@@ -79,10 +58,4 @@ async function run() {
 run().catch(console.dir);
 });
 
-app.get('/api/items', (req, res) => {
-  const client = new MongoClient(uri);
-  const database = client.db('jbdb');
-  const cursor = database.collection('cmps415mongodb').find()
-  console.log(cursor)
-  // ...
-})
+
