@@ -3,7 +3,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
-mongoose.connect("mongodb://localhost:27017/newCollection", {
+mongoose.connect("mongodb+srv://w0708515:AcidKvvng253@jbdb.wr4nvvi.mongodb.net/?retryWrites=true&w=majority", {
 useNewUrlParser: true,
 useUnifiedTopology: true
 });
