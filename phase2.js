@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
     
     console.log('Connected to Database')
     const db = client.db('jbdb')
-    const __dirname = '/Users/jorda/Documents/GitHub/CMPS415ProjectPhase2'
+    const __dirname = 'CMPS415ProjectPhase2'
 
     app.post('/rest/ticket/delete', (req, res) => {
 
