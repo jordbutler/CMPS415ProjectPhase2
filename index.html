@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CMPS415Phase2</title>
+  </head>
+  <body>
+    <h1>CRUD</h1>
+    <form action="/rest/ticket/post" method="POST">
+        <label>POST METHOD:</label><br>
+        <input type="text" placeholder="ticketID" name="ticketID" /><br>
+        <input type="text" placeholder="type" name="type" /><br>
+        <input type="text" placeholder="subject" name="subject" /><br>
+        <input type="text" placeholder="description" name="description" /><br>
+        <input type="text" placeholder="priority" name="priority" /><br>
+        <input type="text" placeholder="status" name="status" /><br>
+        <input type="text" placeholder="recipient" name="recipient" /><br>
+        <input type="text" placeholder="submitter" name="submitter" /><br>
+        <input type="text" placeholder="assignee_id" name="assignee_id" /><br>
+        <input type="text" placeholder="followers_id" name="followers_id[]" /><br>
+        <input type="text" placeholder="followers_id" name="followers_id[]" /><br>
+        <input type="text" placeholder="tags" name="tags[]" /><br>
+        <input type="text" placeholder="tags" name="tags[]" /><br>
+        <button type="submit">Submit</button>
+      </form><br><br>
+
+    <form action="/rest/ticket/delete" method="POST">
+      <label>DELETE METHOD:</label><br>
+      <input type="text" placeholder="ticketID" name="ticketID" /><br>
+      <button type="submit">Submit</button><br><br>
+    </form>
+
+    <form action="/rest/ticket/update" method="POST">
+      <label>UPDATE METHOD:</label>
+      <label>Ticket to update:</label><br>
+      <input type="text" placeholder="ticketID" name="ticketID" /><br><br>
+      <label>Update Information:</label><br>
+      <input type="text" placeholder="type" name="type" /><br>
+      <input type="text" placeholder="subject" name="subject" /><br>
+      <input type="text" placeholder="description" name="description" /><br>
+      <input type="text" placeholder="priority" name="priority" /><br>
+      <input type="text" placeholder="status" name="status" /><br>
+      <input type="text" placeholder="recipient" name="recipient" /><br>
+      <input type="text" placeholder="submitter" name="submitter" /><br>
+      <input type="text" placeholder="assignee_id" name="assignee_id" /><br>
+      <input type="text" placeholder="followers_id" name="followers_id[]" /><br>
+      <input type="text" placeholder="followers_id" name="followers_id[]" /><br>
+      <input type="text" placeholder="tags" name="tags[]" /><br>
+      <input type="text" placeholder="tags" name="tags[]" /><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
