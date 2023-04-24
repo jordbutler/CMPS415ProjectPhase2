@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
     
     console.log('Connected to Database')
     const db = client.db('jbdb')
-    const __dirname = 'index.html'
+    const __dirname = '/Users/jorda/Documents/GitHub/CMPS415ProjectPhase2'
 
     app.post('/rest/ticket/delete', (req, res) => {
 
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
     });
 
     app.get('/', (req, res) => {
-      res.sendFile('index.html')
+      res.sendFile(__dirname + '/index.html')
       
     });
     
